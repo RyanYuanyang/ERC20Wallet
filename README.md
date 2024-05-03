@@ -17,12 +17,12 @@ A wallet application for accessing ERC20 tokens.
 The two tokens are created from a single contract in contracts/ERC20CappedBurnableToken.sol
 
 To test the contract, please use hardhat:
-1. Compile the contracts: %npm hardhat compile
-2. Run testing: %npm hardhat test
+1. Compile the contracts: ```%npm hardhat compile```
+2. Run testing: ```%npm hardhat test```
 
 The web front-end allows user to transfer tokens to other addresses.
 
 To run the front-end interface:
 
-1. Run npm install to install the dependencies
-2. 
+1. Run ```%npm install``` to install the dependencies
+2. Run ```%npm start``` to start the application
