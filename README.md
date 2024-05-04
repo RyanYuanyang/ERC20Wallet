@@ -32,7 +32,9 @@ API_URL=https://eth-sepolia.g.alchemy.com/v2/your-api-key
 PRIVATE_KEY="your-metamask-private-key"
 PUBLIC_KEY ="your-public-account-address" 
 ```
-and enable   //  defaultNetwork: "sepolia",
+and enable   
+```
+  //  defaultNetwork: "sepolia",
   //  networks: {
   //     hardhat: {},
   //     sepolia: {
@@ -40,6 +42,7 @@ and enable   //  defaultNetwork: "sepolia",
   //        accounts: [`0x${PRIVATE_KEY}`]
   //     }
   //  },
+```
 in hardhat.config.js
 
 
