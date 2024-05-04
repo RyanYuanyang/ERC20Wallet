@@ -17,6 +17,10 @@ A wallet application for accessing ERC20 tokens.
 
 The two tokens are created from a single contract in contracts/ERC20CappedBurnableToken.sol
 
+**NOTE!!!
+Please use node v16.20.2
+**
+
 To test the contract, please use hardhat:
 1. Run ```%npm install``` to install the dependencies
 2. Compile the contracts: ```%npm hardhat compile```
