@@ -47,6 +47,7 @@ and enable
   //  },
 ```
 in hardhat.config.js
+
 Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the token to the sepolia testnet.
 
 ## Web application
