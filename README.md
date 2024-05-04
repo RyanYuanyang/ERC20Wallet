@@ -1,4 +1,5 @@
 A wallet application for accessing ERC20 tokens.
+<img width="1512" alt="Screenshot 2024-05-05 at 00 33 22" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/8070300d-4ab7-466a-b60f-28215ef9bf8d">
 
 2 tokens have been created, they are:
 
