@@ -1,6 +1,7 @@
-#A wallet application for accessing ERC20 tokens.
+# A wallet application for accessing ERC20 tokens.
 <img width="1512" alt="Screenshot 2024-05-05 at 00 33 22" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/8070300d-4ab7-466a-b60f-28215ef9bf8d">
 
+## Token Info
 2 tokens have been created, they are:
 
         Name - TokenFite (0x53f245b834973FECFA6948eA197EBFD287893d6f)
@@ -17,17 +18,17 @@
 
 The two tokens are created from a single contract in contracts/ERC20CappedBurnableToken.sol
 
+## Compile and Testing
 **NOTE!!!
 Please use node v16.20.2
 **
 
-#Compile and Testing
 To test the contract, please use hardhat:
 1. Run ```npm install``` to install the dependencies
 2. Compile the contracts: ```npm hardhat compile```
 3. Run testing: ```npm hardhat test```
 
-#Deployment
+## Deployment
 If you want to create a new token based on the smart contract, you need to create a .env file with format:
  ```
 API_URL=https://eth-sepolia.g.alchemy.com/v2/your-api-key
@@ -48,7 +49,7 @@ and enable
 in hardhat.config.js
 Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the token to the sepolia testnet.
 
-#Web application
+## Web application
 The web front-end allows user to transfer tokens to other addresses.
 
 Run ```npm start``` to start the font-end react application
