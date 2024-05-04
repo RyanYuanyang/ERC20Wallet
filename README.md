@@ -26,5 +26,22 @@ To test the contract, please use hardhat:
 2. Compile the contracts: ```%npm hardhat compile```
 3. Run testing: ```%npm hardhat test```
 
+If you want to create a new token based on the smart contract, you need to create a .env file with format:
+ ```
+API_URL=https://eth-sepolia.g.alchemy.com/v2/your-api-key
+PRIVATE_KEY="your-metamask-private-key"
+PUBLIC_KEY ="your-public-account-address" 
+```
+and enable   //  defaultNetwork: "sepolia",
+  //  networks: {
+  //     hardhat: {},
+  //     sepolia: {
+  //        url: API_URL,
+  //        accounts: [`0x${PRIVATE_KEY}`]
+  //     }
+  //  },
+in hardhat.config.js
+
+
 The web front-end allows user to transfer tokens to other addresses.
 Run ```%npm start``` to start the font-end react application
