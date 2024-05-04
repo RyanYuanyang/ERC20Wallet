@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import daiLogo from '../dai-logo.png';
+import logo2010 from '../token2010.png';
+import logoFite from '../tokenfite.png';
+import logalEth from '../ethereum-original.svg';
 import './App.css';
 import Web3 from 'web3';
-import DaiTokenMock from '../abis/DaiTokenMock.json'
+import ERC20CappedBurnableToken from '../abis/ERC20CappedBurnableToken.json'
 
 class App extends Component {
   async componentWillMount() {
@@ -27,26 +29,46 @@ class App extends Component {
     const web3 = window.web3
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
-    const daiTokenAddress = "0x7b729B07EcBDEd8879Acf997aAF6546926982830" // Replace DAI Address Here
-    const daiTokenMock = new web3.eth.Contract(DaiTokenMock.abi, daiTokenAddress)
-    this.setState({ daiTokenMock: daiTokenMock })
-    const balance = await daiTokenMock.methods.balanceOf(this.state.account).call()
-    this.setState({ balance: web3.utils.fromWei(balance.toString(), 'Ether') })
-    const transactions = await daiTokenMock.getPastEvents('Transfer', { fromBlock: 0, toBlock: 'latest', filter: { from: this.state.account } })
+    const ethBalance = await web3.eth.getBalance(this.state.account)
+    const token2010Address = "0x8726EC83Aad2eAd44624FA0Be7721080A2642E23"
+    const token2010 = new web3.eth.Contract(ERC20CappedBurnableToken.abi, token2010Address)
+    this.setState({ token2010: token2010 })
+    const token2010Balance = await token2010.methods.balanceOf(this.state.account).call()
+    const tokenFiteAddress = "0x53f245b834973FECFA6948eA197EBFD287893d6f"
+    const tokenFite = new web3.eth.Contract(ERC20CappedBurnableToken.abi, tokenFiteAddress)
+    this.setState({ tokenFite: tokenFite })
+    const tokenFiteBalance = await tokenFite.methods.balanceOf(this.state.account).call()
+    this.setState({balance: { eth: web3.utils.fromWei(ethBalance.toString(), 'Ether'), 
+                              token2010: web3.utils.fromWei(token2010Balance.toString(), 'Ether'), 
+                              tokenFite: web3.utils.fromWei(tokenFiteBalance.toString(), 'Ether') }})
+    const transactions = await token2010.getPastEvents('Transfer', { fromBlock: 0, toBlock: 'latest', filter: { from: this.state.account } })
     this.setState({ transactions: transactions })
     console.log(transactions)
   }
 
-  transfer(recipient, amount) {
-    this.state.daiTokenMock.methods.transfer(recipient, amount).send({ from: this.state.account })
+  transfer(recipient, amount, token) {
+    console.log(token)
+    if (token === "ETH") {
+      window.web3.eth.sendTransaction({ from: this.state.account, to: recipient, value: amount })
+    }else if (token === "FITE") {
+      this.state.tokenFite.methods.transfer(recipient, amount).send({ from: this.state.account })
+    }
+    else if (token === "2010") {
+      this.state.token2010.methods.transfer(recipient, amount).send({ from: this.state.account })
+    }
   }
 
   constructor(props) {
     super(props)
     this.state = {
       account: '',
-      daiTokenMock: null,
-      balance: 0,
+      token2010: null,
+      tokenFite: null,
+      balance: {
+        eth: 0,
+        token2010: 0,
+        tokenFite: 0
+      },
       transactions: []
     }
 
@@ -59,31 +81,73 @@ class App extends Component {
         <nav className="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
           <a
             className="navbar-brand col-sm-3 col-md-2 mr-0"
-            href="http://www.dappuniversity.com/bootcamp"
+            href=""
             target="_blank"
             rel="noopener noreferrer"
           >
-            Dapp University
+            Welcome to ERC20 Wallet!
           </a>
         </nav>
         <div className="container-fluid mt-5">
           <div className="row">
             <main role="main" className="col-lg-12 d-flex text-center">
               <div className="content mr-auto ml-auto" style={{ width: "500px" }}>
-                <a
-                  href="http://www.dappuniversity.com/bootcamp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img src={daiLogo} width="150" />
-                </a>
-                <h1>{this.state.balance} DAI</h1>
+                <h1>Your Portforlio:</h1>
+                {/* a new line */}
+                <div>
+                <h3>
+                  <a
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={logalEth} width="50" />
+                  </a>
+                  ETH: {this.state.balance.eth}
+                </h3>
+                <h3>
+                  <a
+                    href="https://sepolia.etherscan.io/token/0x53f245b834973FECFA6948eA197EBFD287893d6f"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={logoFite} width="50" />
+                  </a>
+                  FITE: {this.state.balance.tokenFite} 
+                </h3>
+                <h3>
+                  <a
+                    href="https://sepolia.etherscan.io/token/0x8726EC83Aad2eAd44624FA0Be7721080A2642E23"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img src={logo2010} width="50" />
+                  </a>
+                  2010: {this.state.balance.token2010}
+                </h3>
+                </div>
+                <br></br>
+
+                <h1>Transfer Tokens:</h1>
                 <form onSubmit={(event) => {
                   event.preventDefault()
+                  const token = this.token.value
                   const recipient = this.recipient.value
                   const amount = window.web3.utils.toWei(this.amount.value, 'Ether')
-                  this.transfer(recipient, amount)
+                  this.transfer(recipient, amount, token)
                 }}>
+                  <div className="form-group mr-sm-2">     
+                    <select
+                        id="token"
+                        type="select"
+                        ref={(input) => { this.token = input }}
+                        className="form-control"
+                        >
+                        <option value="ETH">ETH</option>
+                        <option value="FITE">FITE</option>
+                        <option value="2010">2010</option>
+                    </select>
+                  </div>
                   <div className="form-group mr-sm-2">
                     <input
                       id="recipient"
