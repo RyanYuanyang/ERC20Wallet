@@ -22,9 +22,9 @@ Please use node v16.20.2
 **
 
 To test the contract, please use hardhat:
-1. Run ```%npm install``` to install the dependencies
-2. Compile the contracts: ```%npm hardhat compile```
-3. Run testing: ```%npm hardhat test```
+1. Run ```npm install``` to install the dependencies
+2. Compile the contracts: ```npm hardhat compile```
+3. Run testing: ```npm hardhat test```
 
 If you want to create a new token based on the smart contract, you need to create a .env file with format:
  ```
@@ -44,8 +44,9 @@ and enable
   //  },
 ```
 in hardhat.config.js
+Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the token to the sepolia testnet.
 
 
 The web front-end allows user to transfer tokens to other addresses.
 
-Run ```%npm start``` to start the font-end react application
+Run ```npm start``` to start the font-end react application
