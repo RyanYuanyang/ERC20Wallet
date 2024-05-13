@@ -25,8 +25,8 @@ Please use node v16.20.2
 
 To test the contract, please use hardhat:
 1. Run ```npm install``` to install the dependencies
-2. Compile the contracts: ```npm hardhat compile```
-3. Run testing: ```npm hardhat test```
+2. Compile the contracts: ```npx hardhat compile```
+3. Run testing: ```npx hardhat test```
 
 ## Deployment
 If you want to create a new token based on the smart contract, you need to create a .env file with format:
