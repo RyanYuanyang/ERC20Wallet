@@ -1,5 +1,5 @@
 # A wallet application for accessing ERC20 tokens.
-![Screenshot 2024-05-14 at 23 25 43](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/e672c98c-1616-480d-ad83-39dd93991f10)
+<img width="1512" alt="Screenshot 2024-05-05 at 00 33 22" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/8070300d-4ab7-466a-b60f-28215ef9bf8d">
 
 ## Token Info
 2 tokens have been created, they are:
@@ -17,6 +17,22 @@
         4. miner block reward - 10
 
 The two tokens are created from a single contract in contracts/ERC20CappedBurnableToken.sol
+
+## Faucet Info
+2 faucets have been created with respect to the TokenFite and Token2010 tokens with the address above, they are:
+
+        Faucet for TokenFite (0x9C566B38f25c9BE0b9203Ff52865776289195cD4)
+        1. initial supply (from owner of TokenFite)
+        2. withdrawal amount per request - 10
+        3. locktime per request - 1 minutes
+
+        Faucet for Token2010 (0x5A7Cf94819C9D5f2ec105052557Cf8490fD28962)
+        1. initial supply (from owner of Token2010)
+        2. withdrawal amount per request - 10
+        3. locktime per request - 1 minutes
+
+The two faucet are created from a single contract in contracts/Faucet.sol
+
 
 ## Compile and Testing
 **NOTE!!!
@@ -54,10 +70,3 @@ Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the toke
 The web front-end allows user to transfer tokens to other addresses.
 
 Run ```npm start``` to start the font-end react application
-
-If the transaction succeed, simply refresh the web page to get the latest account information.
-![Screenshot 2024-05-14 at 23 28 06](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/56a1e3d1-995d-45f4-9ff9-212daf678be1)
-
-If the transaction failed, please try again since the network might be busy.
-![Screenshot 2024-05-14 at 23 27 31](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/4f1f793b-0b9e-4a5a-bb42-ecc85c79532c)
-
