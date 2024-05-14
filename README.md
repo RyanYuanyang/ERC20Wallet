@@ -1,5 +1,5 @@
 # A wallet application for accessing ERC20 tokens.
-<img width="1512" alt="Screenshot 2024-05-05 at 00 33 22" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/8070300d-4ab7-466a-b60f-28215ef9bf8d">
+![Screenshot 2024-05-14 at 23 25 43](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/e672c98c-1616-480d-ad83-39dd93991f10)
 
 ## Token Info
 2 tokens have been created, they are:
@@ -54,3 +54,10 @@ Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the toke
 The web front-end allows user to transfer tokens to other addresses.
 
 Run ```npm start``` to start the font-end react application
+
+If the transaction succeed, simply refresh the web page to get the latest account information.
+![Screenshot 2024-05-14 at 23 28 06](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/56a1e3d1-995d-45f4-9ff9-212daf678be1)
+
+If the transaction failed, please try again since the network might be busy.
+![Screenshot 2024-05-14 at 23 27 31](https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/4f1f793b-0b9e-4a5a-bb42-ecc85c79532c)
+
