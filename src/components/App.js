@@ -5,6 +5,7 @@ import logalEth from '../ethereum-original.svg';
 import './App.css';
 import Web3 from 'web3';
 import ERC20CappedBurnableToken from '../abis/ERC20CappedBurnableToken.json'
+import Faucet from '../abis/Faucet.json'
 
 class App extends Component {
   async componentWillMount() {
@@ -29,13 +30,22 @@ class App extends Component {
     const web3 = window.web3
     const accounts = await web3.eth.getAccounts()
     this.setState({ account: accounts[0] })
+
     const ethBalance = await web3.eth.getBalance(this.state.account)
+
     const token2010Address = "0x8726EC83Aad2eAd44624FA0Be7721080A2642E23"
     const token2010 = new web3.eth.Contract(ERC20CappedBurnableToken.abi, token2010Address)
+    const token2010FaucetAddress = "0x5A7Cf94819C9D5f2ec105052557Cf8490fD28962"
+    const token2010Faucet = new web3.eth.Contract(Faucet.abi, token2010FaucetAddress)
+    this.setState({ token2010Faucet: token2010Faucet })
     this.setState({ token2010: token2010 })
     const token2010Balance = await token2010.methods.balanceOf(this.state.account).call()
+
     const tokenFiteAddress = "0x53f245b834973FECFA6948eA197EBFD287893d6f"
     const tokenFite = new web3.eth.Contract(ERC20CappedBurnableToken.abi, tokenFiteAddress)
+    const tokenFiteFaucetAddress = "0x9C566B38f25c9BE0b9203Ff52865776289195cD4"
+    const tokenFiteFaucet = new web3.eth.Contract(Faucet.abi, tokenFiteFaucetAddress)
+    this.setState({ tokenFiteFaucet: tokenFiteFaucet })
     this.setState({ tokenFite: tokenFite })
     const tokenFiteBalance = await tokenFite.methods.balanceOf(this.state.account).call()
     this.setState({balance: { eth: web3.utils.fromWei(ethBalance.toString(), 'Ether'), 
@@ -43,7 +53,7 @@ class App extends Component {
                               tokenFite: web3.utils.fromWei(tokenFiteBalance.toString(), 'Ether') }})
     const transactions = await token2010.getPastEvents('Transfer', { fromBlock: 0, toBlock: 'latest', filter: { from: this.state.account } })
     this.setState({ transactions: transactions })
-    console.log(transactions)
+    console.log((await this.state.token2010Faucet.methods.getBalance().call()).toString())
   }
 
   transfer(recipient, amount, token) {
@@ -58,12 +68,23 @@ class App extends Component {
     }
   }
 
+  async getFite() {
+    console.log(this.state.tokenFiteFaucet)
+    await this.state.tokenFiteFaucet.methods.requestTokens().send({ from: this.state.account })
+  }
+
+  async get2010() {
+    await this.state.token2010Faucet.methods.requestTokens().send({ from: this.state.account })
+  }
+
   constructor(props) {
     super(props)
     this.state = {
       account: '',
       token2010: null,
+      token2010Faucet: null,
       tokenFite: null,
+      tokenFiteFaucet: null,
       balance: {
         eth: 0,
         token2010: 0,
@@ -73,6 +94,8 @@ class App extends Component {
     }
 
     this.transfer = this.transfer.bind(this)
+    this.getFite = this.getFite.bind(this)
+    this.get2010 = this.get2010.bind(this)
   }
 
   render() {
@@ -113,7 +136,8 @@ class App extends Component {
                   >
                     <img src={logoFite} width="50" />
                   </a>
-                  FITE: {this.state.balance.tokenFite} 
+                  FITE: {this.state.balance.tokenFite}&nbsp;   
+                  <button className="btn btn-primary" onClick={()=>this.getFite()}>Get 10 FITE</button>
                 </h3>
                 <h3>
                   <a
@@ -123,7 +147,8 @@ class App extends Component {
                   >
                     <img src={logo2010} width="50" />
                   </a>
-                  2010: {this.state.balance.token2010}
+                  2010: {this.state.balance.token2010}&nbsp;
+                  <button className="btn btn-primary" onClick={()=>this.get2010()}>Get 10 2010</button>
                 </h3>
                 </div>
                 <br></br>

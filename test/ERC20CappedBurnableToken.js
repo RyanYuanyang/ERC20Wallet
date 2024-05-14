@@ -16,7 +16,7 @@ describe("ERC20CappedBurnableToken contract", function() {
 
   beforeEach(async function () {
     // Get the ContractFactory and Signers here.
-    Token = await ethers.getContractFactory("ERC20CappedBurnableToken");
+    Token = await ethers.getContractFactory("contracts/ERC20CappedBurnableToken.sol:ERC20CappedBurnableToken");
     [owner, addr1, addr2] = await hre.ethers.getSigners();
 
     token2010 = await Token.deploy(name, symbol ,tokenCap, tokenBlockReward, initialSupply);

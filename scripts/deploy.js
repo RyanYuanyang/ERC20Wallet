@@ -2,7 +2,7 @@ const hre = require("hardhat");
 
 async function main() {
     // Get the ContractFactory and Signers here.
-    const Token = await hre.ethers.getContractFactory("ERC20CappedBurnableToken");
+    const Token = await hre.ethers.getContractFactory("contracts/ERC20CappedBurnableToken.sol:ERC20CappedBurnableToken");
 
     /*
         Deployment scripts for TokenFite
