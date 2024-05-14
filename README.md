@@ -20,7 +20,7 @@ The two tokens are created from a single contract in contracts/ERC20CappedBurnab
 
 ## Compile and Testing
 **NOTE!!!
-Please use node v16.20.2
+Please use node v22.1.0!
 **
 
 To test the contract, please use hardhat:
