@@ -83,7 +83,7 @@ in hardhat.config.js
 
 Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the token to the sepolia testnet.
 
-Run ```npx hardhat --network sepolia run scripts/deploy_faucet.js``` to deploy the token to the sepolia testnet.
+Run ```npx hardhat --network sepolia run scripts/deploy_faucet.js``` to deploy the faucet to the sepolia testnet.
 
 
 ## Web application
