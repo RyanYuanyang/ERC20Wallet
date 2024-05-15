@@ -1,11 +1,10 @@
 # A wallet application for accessing ERC20 tokens.
 <img width="1320" alt="Screenshot 2024-05-15 at 16 30 58" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/544f1f45-b4be-4bf4-9d86-64dc5b58706e">
-**Features:
-**
-1. **Portfolio**: display token amount in your account
-2. **On Chain Transfer**: a transfer function to transfer 2 supported tokens and ETH from your account to another address through the Sepilia network
-3. **Faucet**: request to get test tokens from the faucet within the application
-4. **Transaction History**: display all historical transactions made by the account
+Features: 
+1. Portfolio: display token amount in your account
+2. On Chain Transfer: a transfer function to transfer 2 supported tokens and ETH from your account to another address through the Sepilia network
+3. Faucet: request to get test tokens from the faucet within the application
+4. Transaction History: display all historical transactions made by the account
 
 ## Token Info
 2 tokens have been created and deployed to the Sepolia testchain, they are:
