@@ -34,21 +34,21 @@ The two tokens are created from a single contract in contracts/ERC20CappedBurnab
 The two faucet are created from a single contract in contracts/Faucet.sol
 
 ## Project Structure
-This is a hardhat ptoject. The front-end is a react application.
+This is a _hardhat_ ptoject. The front-end is a _react_ application.
 
-artifacts: stores all compiled objects
+**artifacts**: stores all compiled objects
 
-contracts: all contracts' source code (Faucet.sol and ERCCappedBurnableToken.sol)
+**contracts**: all contracts' source code (Faucet.sol and ERCCappedBurnableToken.sol)
 
-scripts: Deployment scripts
+**scripts**: Deployment scripts
 
-test: Testign scripts
+**test**: Testign scripts
 
-src: front-end react app
+**src**: front-end react app
 
-src/abis: contains the ABI for deployed contracts on the Sepolia testchain
+**src/abis**: contains the ABI for deployed contracts on the Sepolia testchain
 
-src/components: React UI components
+**src/components**: React UI components
 
 
 ## Compile and Testing
