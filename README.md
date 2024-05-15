@@ -97,6 +97,5 @@ Run ```npx hardhat --network sepolia run scripts/deploy_faucet.js``` to deploy t
 
 
 ## Web application
-The web front-end allows user to transfer tokens to other addresses.
 
 Run ```npm start``` to start the font-end react application
