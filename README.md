@@ -37,11 +37,17 @@ The two faucet are created from a single contract in contracts/Faucet.sol
 This is a hardhat ptoject. The front-end is a react application.
 
 artifacts: stores all compiled objects
+
 contracts: all contracts' source code (Faucet.sol and ERCCappedBurnableToken.sol)
+
 scripts: Deployment scripts
+
 test: Testign scripts
+
 src: front-end react app
+
 src/abis: contains the ABI for deployed contracts on the Sepolia testchain
+
 src/components: React UI components
 
 
