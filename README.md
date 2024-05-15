@@ -34,11 +34,11 @@ The two tokens are created from a single contract in contracts/ERC20CappedBurnab
 The two faucet are created from a single contract in contracts/Faucet.sol
 
 ## Project Structure
-This is a _hardhat_ ptoject. The front-end is a _react_ application.
+This is a **Hardhat + React** application.
 
 **artifacts**: stores all compiled objects
 
-**contracts**: all contracts' source code (Faucet.sol and ERCCappedBurnableToken.sol)
+**contracts**: all contracts' source code (Faucet.sol and ERC20CappedBurnableToken.sol)
 
 **scripts**: Deployment scripts
 
@@ -59,7 +59,7 @@ Please use node v22.1.0!
 To test the contract, please use hardhat:
 1. Run ```npm install``` to install the dependencies
 2. Compile the contracts: ```npx hardhat compile```
-3. Run testing: ```npx hardhat test```
+3. Run testing (for ERC20CappedBurnableToken): ```npx hardhat test```
 
 ## Deployment
 If you want to create a new token based on the smart contract, you need to create a .env file with format:
@@ -82,6 +82,9 @@ and enable
 in hardhat.config.js
 
 Run ```npx hardhat --network sepolia run scripts/deploy.js``` to deploy the token to the sepolia testnet.
+
+Run ```npx hardhat --network sepolia run scripts/deploy_faucet.js``` to deploy the token to the sepolia testnet.
+
 
 ## Web application
 The web front-end allows user to transfer tokens to other addresses.
