@@ -2,7 +2,7 @@
 <img width="1512" alt="Screenshot 2024-05-05 at 00 33 22" src="https://github.com/RyanYuanyang/ERC20Wallet/assets/78694466/8070300d-4ab7-466a-b60f-28215ef9bf8d">
 
 ## Token Info
-2 tokens have been created, they are:
+2 tokens have been created and deployed to the Sepolia testchain, they are:
 
         Name - TokenFite (0x53f245b834973FECFA6948eA197EBFD287893d6f)
         1. initial supply (send to owner) - 200,000
@@ -19,7 +19,7 @@
 The two tokens are created from a single contract in contracts/ERC20CappedBurnableToken.sol
 
 ## Faucet Info
-2 faucets have been created with respect to the TokenFite and Token2010 tokens with the address above, they are:
+2 faucets have been deployed to the Sepolia testchain with respect to the TokenFite and Token2010 tokens they are:
 
         Faucet for TokenFite (0x9C566B38f25c9BE0b9203Ff52865776289195cD4)
         1. initial supply (from owner of TokenFite)
@@ -32,6 +32,17 @@ The two tokens are created from a single contract in contracts/ERC20CappedBurnab
         3. locktime per request - 1 minutes
 
 The two faucet are created from a single contract in contracts/Faucet.sol
+
+## Project Structure
+This is a hardhat ptoject. The front-end is a react application.
+
+artifacts: stores all compiled objects
+contracts: all contracts' source code (Faucet.sol and ERCCappedBurnableToken.sol)
+scripts: Deployment scripts
+test: Testign scripts
+src: front-end react app
+src/abis: contains the ABI for deployed contracts on the Sepolia testchain
+src/components: React UI components
 
 
 ## Compile and Testing
